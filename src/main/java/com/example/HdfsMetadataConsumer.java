@@ -6,12 +6,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Properties;
 import com.example.BigQueryStreamExample;
+import com.example.StreamToGCS;
 
 public class HdfsMetadataConsumer {
     public static void main(String[] args) {
         Properties props = new Properties();
         props.put("bootstrap.servers", "localhost:9092");
-        props.put("group.id", "hdfs-metadata-consumer-group1");
+        props.put("group.id", "hdfs-metadata-consumer-group2");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("auto.offset.reset", "earliest"); // Start from the beginning of the topic if no offsets exist
@@ -30,7 +31,9 @@ public class HdfsMetadataConsumer {
                         record.key(), record.value(), record.partition(), record.offset());
                         HashMap<String, String> metadata = new HashMap<>();
                         metadata.put("null", record.value());
-                        BigQueryStreamExample.sendRows(metadata);
+                        //BigQueryStreamExample.sendRows(metadata);
+                        String toGcs = record.value();
+                        StreamToGCS.sendRowsToGcs(toGcs);
 
 
             }

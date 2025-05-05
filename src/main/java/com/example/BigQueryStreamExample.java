@@ -16,13 +16,6 @@ public class BigQueryStreamExample {
 
 
         TableId tableId = TableId.of(datasetName, tableName);
-        //TableId tableId = TableId.of(project, datasetName, tableName);
-
-        // Create a row to insert
-        // Map<String, Object> rowContent = new HashMap<>();
-        // rowContent.put("id", 123);
-        // rowContent.put("name", "Alice");
-        // rowContent.put("created_at", "2025-04-30T10:00:00Z");
 
         // Convert row to InsertAllRequest.RowToInsert
         InsertAllRequest.RowToInsert row = InsertAllRequest.RowToInsert.of(rowContent);
