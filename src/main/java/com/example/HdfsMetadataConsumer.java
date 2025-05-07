@@ -5,8 +5,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Properties;
-import com.example.BigQueryStreamExample;
-import com.example.StreamToGCS;
+
 
 public class HdfsMetadataConsumer {
     public static void main(String[] args) {
